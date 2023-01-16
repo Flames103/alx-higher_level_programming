@@ -1,20 +1,3 @@
-
-Victorchimdindu
-/
-alx-higher_level_programming
-Public
-Code
-Issues
-Pull requests
-Actions
-Projects
-Security
-Insights
-alx-higher_level_programming/0x08-python-more_classes/8-rectangle.py
-
-victorchimdindu python task 8
- 1 contributor
-Executable File  101 lines (86 sloc)  3.13 KB
 #!/usr/bin/python3
 """Defines a Rectangle class."""
 
