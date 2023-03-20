@@ -1,15 +1,16 @@
 #!/usr/bin/python3
 """
-    A script that lists all State objects from hbtn_0e_6_usa that conatin
-    the letter a from teh database.
+    A script that prints all City objects from the database hbtn_0e_6_usa
     Username, password and dbname wil be passed as arguments to the script.
 """
 
 
 import sys
 from model_state import Base, State
+from model_city import City
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
+
 
 if __name__ == '__main__':
     engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'.format(
@@ -22,12 +23,13 @@ if __name__ == '__main__':
     # create a session
     session = Session()
 
-    # extract first state
-    states = session.query(State).filter(State.name.ilike('%a%')) \
-                    .order_by(State.id).all()
+    # extract all cities in a state
+    cities = session.query(State, City) \
+                    .filter(State.id == City.state_id)
 
-    # print states
-    for state in states:
-        print("{}: {}".format(state.id, state.name))
+    # print all states
+
+    for ci in cities:
+        print("{}: ({}) {}".format(ci.State.name, ci.City.id, ci.City.name))
 
     session.close()

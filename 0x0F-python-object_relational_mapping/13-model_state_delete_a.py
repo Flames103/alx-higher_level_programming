@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
-    A script that lists all State objects from hbtn_0e_6_usa that conatin
-    the letter a from teh database.
+    A script that deletes all State objects from hbtn_0e_6_usa that conatin
+    the letter a
     Username, password and dbname wil be passed as arguments to the script.
 """
 
@@ -22,12 +22,13 @@ if __name__ == '__main__':
     # create a session
     session = Session()
 
-    # extract first state
-    states = session.query(State).filter(State.name.ilike('%a%')) \
-                    .order_by(State.id).all()
+    # extract states with a in them
+    states = session.query(State).filter(State.name.ilike('%a%')).all()
 
-    # print states
+    # delete states
     for state in states:
-        print("{}: {}".format(state.id, state.name))
+        session.delete(state)
+
+    session.commit()
 
     session.close()

@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """
-    A script that lists all State objects from hbtn_0e_6_usa that conatin
-    the letter a from teh database.
-    Username, password and dbname wil be passed as arguments to the script.
+    A script that changes teh name of a State object in hbtn_0e_6_usa
+    name of State where id = 2 to New Mexico
+    Username, password, dbname will be passed as arguments to the script.
 """
 
 
@@ -17,17 +17,16 @@ if __name__ == '__main__':
                            pool_pre_ping=True)
 
     Session = sessionmaker(bind=engine)
+
     Base.metadata.create_all(engine)
 
     # create a session
     session = Session()
 
-    # extract first state
-    states = session.query(State).filter(State.name.ilike('%a%')) \
-                    .order_by(State.id).all()
-
-    # print states
-    for state in states:
-        print("{}: {}".format(state.id, state.name))
+    # fetch row to change
+    rename_state = session.query(State) \
+                          .filter(State.id == 2).first()
+    rename_state.name = 'New Mexico'
+    session.commit()
 
     session.close()
