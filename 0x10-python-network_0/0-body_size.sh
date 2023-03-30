@@ -1,4 +1,3 @@
-#!/usr/bin/env bash
-
-# Script that takes a URL and displays b/size of response.
-curl -sI "$1" | grep -E 'Content-Length: [0-9]+' | cut -d " " -f2
+#!/bin/bash
+# ends a request to that URL displays the size of the response body
+curl -sI "$1" | grep -i Content-Length | cut -d " " -f2
