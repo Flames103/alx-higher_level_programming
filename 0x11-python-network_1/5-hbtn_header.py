@@ -2,6 +2,7 @@
 """
 given URL as parameter, fetch URL and display value from reponse header
 usage: ./5-hbtn_header https://intranet.hbtn.io
+5-hbtn_header.py
 """
 from sys import argv
 import requests

@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """
-given URL & email as params, send POST req to URL, display response body utf-8
-usage: ./2-post_email.py http://0.0.0.0:5000/post_email hr@holbertonschool.com
+2-post_email.py
 """
 from sys import argv
 import urllib.parse
